@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Gilroy-Medium";
+    src: url("./assets/Gilroy-Medium.ttf") format("ttf"),
+         url("./assets/Gilroy-Semibold.ttf") format("ttf"),
+         url("./assets/Gilroy-Extrabold.ttf") format("ttf");
+
+}
+
+@font-face {
+    font-family: "Gilroy-Extrabold";
+         src: url("./assets/Gilroy-Extrabold.ttf") format("ttf");
+
+}
+
+@font-face {
+    font-family: "Gilroy-Semibold";
+    src: url('./assets/Gilroy-UltraLight.woff') format('woff'),
+     url("./assets/Gilroy-Semibold.ttf") format("ttf");
+
+}
