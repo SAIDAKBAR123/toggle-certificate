@@ -72,7 +72,8 @@ export default {
     getSVG () {
       // eslint-disable-next-line new-cap
       const doc = new jsPDF({ format: 'a4', orientation: 'l' })
-
+      doc.addFont('Gilroy-Semibold.woff', 'NotoSansCJKjp1', 'normal')
+      doc.setFont('NotoSansCJKjp1')
       const element = document.getElementById('svg_pdf')
       doc
         .svg(element, {
