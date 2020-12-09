@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "jspdf": "^2.1.1",
+    "svg-to-pdfkit": "^0.1.8",
     "svg2pdf.js": "^2.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

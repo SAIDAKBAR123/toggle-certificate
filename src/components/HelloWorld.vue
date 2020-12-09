@@ -4,7 +4,7 @@
    <v-container>
       <v-row justify="center">
       <v-col cols="4">
-        <h2 style="font-family: Gilroy-Semibold">HELLO WORLd</h2>
+        <h2 style="font-family: Gilroy-Semibold">CONVERTER SVG to PDF</h2>
         <v-text-field v-model="fname" label="Name"></v-text-field>
         <!-- <v-text-field v-model="course" label="Course Name"></v-text-field>
         <v-text-field v-model="type" label="type" hint="golden, bronze, silver"></v-text-field>
@@ -16,13 +16,19 @@
         <v-card v-html="svg"></v-card>
       </v-col>
     </v-row>
+    <v-row v-show="false">
+      <v-col>
+       <canvas id="canvas" width="1720" height="1080"></canvas>
+      </v-col>
+    </v-row>
    </v-container>
   </div>
 </template>
 
 <script>
-import { jsPDF } from 'jspdf'
+// import { jsPDF } from 'jspdf'
 import image from '@/assets/image.js'
+// import SVGtoPDF from 'svg-to-pdfkit'
 import 'svg2pdf.js'
 
 export default {
@@ -31,6 +37,7 @@ export default {
       svg: image(),
       fname: '',
       course: '',
+      images: '',
       type: '',
       created_at: new Date().getFullYear(),
       image: '',
@@ -71,21 +78,43 @@ export default {
   methods: {
     getSVG () {
       // eslint-disable-next-line new-cap
-      const doc = new jsPDF({ format: 'a4', orientation: 'l' })
-      doc.addFont('Gilroy-Semibold.woff', 'NotoSansCJKjp1', 'normal')
-      doc.setFont('NotoSansCJKjp1')
+      // const doc = new jsPDF({ format: 'a4', orientation: 'l' })
+      // // doc.addFont('Gilroy-Semibold.woff', 'NotoSansCJKjp1', 'normal')
+      // // doc.setFont('NotoSansCJKjp1')
       const element = document.getElementById('svg_pdf')
-      doc
-        .svg(element, {
-          x: -14,
-          y: 0,
-          width: 325,
-          height: 210
-        })
-        .then(() => {
-          // save the created pdf
-          doc.save('myPDF.pdf')
-        })
+      // // var canvas = document.createElement('canvas');
+      // doc.addSvgAsImage(element, -14, 0, 325, 210, 'image', 'NONE', 0)
+      // doc
+      //   .svg(element, {
+      //     x: -14,
+      //     y: 0,
+      //     width: 325,
+      //     height: 210
+      //   })
+      //   .then(() => {
+      //     // save the created pdf
+      //     doc.save('myPDF.pdf')
+      //   })
+
+      var svgString = new XMLSerializer().serializeToString(element)
+      var canvas = document.getElementById('canvas')
+      var ctx = canvas.getContext('2d')
+      var DOMURL = self.URL || self.webkitURL || self
+      var img = new Image()
+      var svg = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' })
+      var url = DOMURL.createObjectURL(svg)
+      img.onload = function () {
+        ctx.drawImage(img, 0, 0, 1720, 1080)
+        var png = canvas.toDataURL('image/png')
+        DOMURL.revokeObjectURL(png)
+        var link = document.createElement('a')
+        link.href = png
+        link.download = 'Download.png'
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+      }
+      img.src = url
     }
   }
 }
