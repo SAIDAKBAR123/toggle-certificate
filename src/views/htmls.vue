@@ -1,6 +1,9 @@
 <template>
   <div id="print_bill" style="width: 300px; padding: 5px; font-family: sans-serif!important">
     <div style="display: flex; justify-content: center; margin: 20px">
+      <img :src="require('../assets/bill_logo.png')" width="150" height="100" alt="asd">
+    </div>
+    <div style="display: flex; justify-content: center; margin: 20px">
       <span>Заказ № 2</span>
     </div>
     <div style="margin-bottom: 10px">
@@ -22,7 +25,7 @@
           </tr>
           <tr v-for="item in parseInt(itemLength.count)" :key="item">
             <td style="font-size: 14px">посуда</td>
-            <td style="font-size: 14px">X1</td>
+            <td style="font-size: 14px">x1</td>
             <td style="font-size: 14px">12 000</td>
             <td style="font-size: 14px">12 000</td>
           </tr>

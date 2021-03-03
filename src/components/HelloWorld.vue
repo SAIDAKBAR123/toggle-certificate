@@ -16,9 +16,9 @@
         <v-card v-html="svg"></v-card>
       </v-col>
     </v-row>
-    <v-row v-show="false">
+    <v-row >
       <v-col>
-       <canvas id="canvas" width="1720" height="1080"></canvas>
+       <canvas id="canvas" width="4000" height="3000"></canvas>
       </v-col>
     </v-row>
    </v-container>
@@ -27,14 +27,14 @@
 
 <script>
 // import { jsPDF } from 'jspdf'
-import image from '@/assets/image.js'
+import imageObj from '@/assets/image.js'
 // import SVGtoPDF from 'svg-to-pdfkit'
 import 'svg2pdf.js'
 
 export default {
   data () {
     return {
-      svg: image(),
+      svg: imageObj(),
       fname: '',
       course: '',
       images: '',
@@ -72,7 +72,7 @@ export default {
       }
     },
     fname (val) {
-      this.svg = image(val)
+      this.svg = imageObj(val)
     }
   },
   methods: {
@@ -104,8 +104,10 @@ export default {
       var svg = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' })
       var url = DOMURL.createObjectURL(svg)
       img.onload = function () {
-        ctx.drawImage(img, 0, 0, 1720, 1080)
-        var png = canvas.toDataURL('image/png')
+        ctx.drawImage(img, 0, 0, 4000, 3000)
+        var png = canvas.toDataURL('image/png') // svg => canvas => image
+        // png that is already converted from svg
+        console.log(png)
         DOMURL.revokeObjectURL(png)
         var link = document.createElement('a')
         link.href = png
