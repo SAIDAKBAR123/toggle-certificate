@@ -9,22 +9,23 @@
       </div>
   SVG to PDF
       <v-spacer></v-spacer>
+      <v-btn to="/about" color="orange" dark>Bill</v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+// import HelloWorld from './components/HelloWorld'
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld
+    // HelloWorld
   },
 
   data: () => ({
