@@ -12,6 +12,7 @@
       <span style="margin-top: 10px; font-size: 14px; font-weight: 500"><b>Адрес:</b> Toshkent shah, Yunusobod tum, 23 uy</span><br>
       <span style="margin-top: 10px; font-size: 14px; font-weight: 500"><b>Заказ принят:</b> 2/03/2020 21:32</span><br>
       <span style="margin-top: 10px; font-size: 14px; font-weight: 500"><b>Тип оплаты:</b> CASH</span><br>
+      <span style="margin-top: 10px; font-size: 14px; font-weight: 500"><b>Тип доставки:</b> Самовывоз</span><br>
       <!-- <span style="margin-top: 10px; font-size: 12px; font-weight: 500"><b>Тип оплаты:</b> client of dummy</span><br> -->
     </div>
     <hr style="width: 100%; border-top: 1px dashed black; margin-top: 5px">
